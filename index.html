@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>??¿¿?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #contenedorRadio {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: auto;
+        }
+
+        #botonReproducir {
+            background-color: rgb(83, 83, 83);
+            color: white;
+            padding: 20px;
+            font-size: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        #botonReproducir:hover {
+            background-color: rgb(167, 167, 167);
+        }
+
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div id="contenedorRadio">
+    <h1>ŕ̴͉͉̦̀͘a̴̺͙͎̓̐̈́d̸̡͎͉̔̽͘i̵͕̠͙͋̽̈́o̸̘̪͙͌̓͌ f̸̼͍͎͒̈́͑l̴͉͚̘͒̔͝o̵͎̙͎̿̈́͊p̴̡͕͓̿͐̚p̸͇̘̝̔͝ḯ̸͇͎͘͝t̸̪͓͍͆̽a̵͓̠̟͌̓̾</h1>
+
+    <button id="botonReproducir">▶️</button>
+
+    <audio id="reproductor">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+<script>
+    const reproductor = document.getElementById('reproductor');
+    const botonReproducir = document.getElementById('botonReproducir');
+
+    const canciones = [
+        { nombre: 'Canción 1', ruta: 'asset/1.mp3' },
+        { nombre: 'Canción 2', ruta: 'asset/f.mp3' },
+        { nombre: 'Canción 5', ruta: 'cancion5.mp3' }
+    ];
+
+    let indiceActual = 0;
+
+    // Función para cargar y reproducir la canción actual
+    function cargarCancion() {
+        const cancion = canciones[indiceActual];
+        reproductor.src = cancion.ruta;
+        reproductor.play();
+    }
+
+    // Función para cargar y reproducir la siguiente canción
+    function cargarSiguienteCancion() {
+        indiceActual = (indiceActual + 1) % canciones.length;
+        cargarCancion();
+    }
+
+    // Asignar la función al evento click del botón
+    botonReproducir.addEventListener('click', cargarCancion);
+
+    // Manejar el evento 'ended' para cargar automáticamente la siguiente canción
+    reproductor.addEventListener('ended', cargarSiguienteCancion);
+
+    document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.key === 'u') {
+            // Cambiar la ubicación actual a una nueva URL
+            window.location.href = 'https://discord.gg/PB598zJx7H';
+            event.preventDefault();
+        }
+    });
+    document.addEventListener('contextmenu', function (event) {
+        event.preventDefault(); // Evitar el menú contextual predeterminado del navegador
+        alert('Hola');
+    });
+</script>
+
+</body>
+</html>
